@@ -28,6 +28,7 @@ class App extends Component {
   }
 
   render(){
+       const path_name = this.props.location.pathname
     return (
 
           <Fragment>
@@ -39,16 +40,18 @@ class App extends Component {
                   <Route path='/posts/:id/edit' exact component={EditPost}/>
                   <Route path='/comment/:id/edit' exact component={EditComment}/>
                   <Route path='/category/:path' exact component={FilteredView}/>
-              </div>
+              </div>{(path_name === '/' || path_name.includes('category')) && (
               <Link to='/new-post' className='add-post-button'>
-                  <NewPostButton style={{'.MuiFab-primary-128 background-color':'#232f3e'}}/>
+                  <NewPostButton style={{'background-color':'#232f3e'}}/>
               </Link>
+          )}
+
           </Fragment>
     );
   }
 }
 
-const mapStateToProps = ({ posts, comments, categories, classes }) => ({
+const mapStateToProps = ({ posts, comments, categories, classes }, props) => ({
         posts:posts,
         comments:comments,
         categories:categories ,

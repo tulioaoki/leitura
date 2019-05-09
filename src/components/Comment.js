@@ -4,8 +4,9 @@ import Paper from "@material-ui/core/Paper";
 import {Link, withRouter} from "react-router-dom";
 import Icon from "@material-ui/core/Icon";
 import DeleteIcon from '@material-ui/icons/Delete';
-import {handleDeleteComment} from "../actions/comments";
+import {handleDeleteComment, handleEditPostDownvoteComment, handleEditPostUpvoteComment} from "../actions/comments";
 import IconButton from "@material-ui/core/IconButton";
+import {handleEditPostDownvote, handleEditPostUpvote} from "../actions/posts";
 
 class Comment extends React.Component{
 
@@ -22,9 +23,22 @@ class Comment extends React.Component{
         function handleDelete(){
             dispatch(handleDeleteComment(comment.id, comment_key))
         }
+        const handleUpvoteComment = () => (
+            dispatch(handleEditPostUpvoteComment(comment.id, comment_key, comment, this.props.post_id))
+        )
+
+        const handleDownvoteComment = () => (
+            dispatch(handleEditPostDownvoteComment(comment.id, comment_key, comment, this.props.post_id))
+        )
+
         return(
             <div className="container">
                             <Paper className='textarea'>
+                                <div style={{'justify-content':'left','float': 'right'}}>
+                                    <div className="arrow-up-mini" onClick={handleUpvoteComment}></div>
+                                    <br/>
+                                    <div className="arrow-down-mini" onClick={handleDownvoteComment}></div>
+                                </div>
                                 <span className='commentVoteScore'>
                                     {comment.voteScore}
                                     <p style={{'fontSize':'8px'}}>

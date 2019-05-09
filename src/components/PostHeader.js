@@ -10,7 +10,7 @@ class PostHeader extends Component{
         const { dispatch } = this.props
         const { author, title, timestamp, voteScore, id } = post;
         const date = new Date(timestamp).toLocaleDateString("pt-BR");
-        const path = `/posts/${id}`;
+        const path = `/posts/${key}`;
 
         const handleUpvote = () => (
             dispatch(handleEditPostUpvote(id,key, post))

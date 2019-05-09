@@ -24,7 +24,7 @@ class CommentView extends React.Component {
         return comments
             .filter(( elem, i, array ) => array[i].parent_id === this.props.post_id)
             .sort((a,b) => b.voteScore - a.voteScore)
-            .map((item, index) => (<li id={index}><Comment style={{ style:'inline-block', display: 'inline'}} comment={item} comment_key={index}/></li>))
+            .map((item, index) => (<li id={index}><Comment style={{ style:'inline-block', display: 'inline'}} post_id={this.props.post_id} comment={item} comment_key={index}/></li>))
     }
 
 }

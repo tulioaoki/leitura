@@ -106,6 +106,34 @@ export function votePost({id, vote}){
         })
 }
 
+export function voteComment({id, vote}){
+    const body = JSON.stringify({
+        'option': vote
+    });
+
+    const hdrs = {
+        method:'POST',
+        headers: new Headers({
+            'content-type': 'application/json',
+            Authorization: "Udacity",
+            'Accept': 'application/json',
+        }),
+        body:body,
+    };
+    return Promise.all(
+        [
+            fetch(`http://localhost:3001/comments/${id}`,hdrs).then(res => res.json()).catch(() => ([])),
+        ]
+    )
+        .then(([comment]) => ({
+            comment,
+        }))
+        .catch((err) => {
+            console.log(err);
+        })
+}
+
+
 
 export function getPostCommentsById(id){
     const hdrs = {

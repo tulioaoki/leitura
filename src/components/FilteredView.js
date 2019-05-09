@@ -29,7 +29,6 @@ class FilteredView extends Component{
                                     <PostBottom post={item} index={index}/>
                                 </Paper>
                                 <br/>
-                                <CommentView post={item} index={index}/>
                             </li>))}
                 </ul>
             </div>)

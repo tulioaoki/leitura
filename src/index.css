@@ -187,3 +187,22 @@ code {
   justify-content: center;
 
 }
+
+.arrow-up-mini {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-bottom: 5px solid black;
+  justify-content: center;
+}
+
+.arrow-down-mini {
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 5px solid black;
+  justify-content: center;
+
+}

@@ -25,7 +25,7 @@ class PostPage extends Component {
                     <Post post={post} index={id}/>
                     <PostBottom post={post} index={id}/>
                 </Paper>
-                {this.props.comments && <CommentView/>}
+                {this.props.comments && <CommentView />}
                 <NewCommentForm post={post} index={id}/>
                 <br/>
             </div>

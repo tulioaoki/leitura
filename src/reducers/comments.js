@@ -1,4 +1,4 @@
-import { GET_COMMENT_BY_POST_ID, ADD_COMMENT, DELETE_COMMENT, EDIT_COMMENT } from '../actions/comments'
+import { GET_COMMENT_BY_POST_ID, ADD_COMMENT, DELETE_COMMENT, EDIT_COMMENT, UP_COMMENT, DOWN_COMMENT } from '../actions/comments'
 
 const initial_state = {
     comments:[]
@@ -32,6 +32,23 @@ export default function comments (state = initial_state, action) {
             return{
                 ...state,
                 comments:all_comments
+
+            };
+        case UP_COMMENT:
+            console.log(state)
+            const new_comments = state.comments
+            new_comments[action.key].voteScore++
+            return{
+                ...state,
+                comments:new_comments
+
+            };
+        case DOWN_COMMENT:
+            const down_comments = state.comments
+            down_comments[action.key].voteScore--
+            return{
+                ...state,
+                comments:down_comments
 
             };
         default :
